@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Gilroy";
+  src: url("/public/fonts/Gilroy/Gilroy-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Gilroy Bold";
+  src: url("/public/fonts/Gilroy/Gilroy-ExtraBold.otf") format("opentype");
+}
+
+:root {
+  --header-font: "Gilroy Bold";
+  --body-font: "Times New Roman";
+  --body-line-height: 40px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--header-font);
+}
+
+p {
+  font-family: var(--body-font);
+}
