@@ -18,14 +18,22 @@
   --body-line-height: 40px;
 
   --color-blue: #24c3ff;
+  --color-blue-light: rgba(36, 195, 255, 0.45);
   --color-orange: #ffc134;
   --color-orange-dark: #c9992b;
+  --color-orange-light: #ffe4a7;
   --color-gray: #4d4d4d;
   --color-gray-light: #fafafa;
 
   --border-radius: 8px;
-
   --border-width: 2px;
+
+  --start-interval: 40%;
+  --stop-interval: 75%;
+}
+
+html {
+  font-size: 1.1em;
 }
 
 html,
@@ -46,7 +54,7 @@ a {
 /* Typography */
 h1 {
   font-family: var(--heading-font);
-  font-size: 35px;
+  font-size: 2.2em;
 }
 
 h2 {
@@ -54,7 +62,7 @@ h2 {
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 1.2em;
   margin: 0;
   padding: 0;
   margin-top: 10px;
@@ -63,11 +71,12 @@ h2 {
 
 .spacey {
   line-height: 30px;
-  font-size: 20px;
+  font-size: 1.4em;
 }
 
 p {
   font-family: var(--body-font);
+  font-size: 1.1em;
 }
 
 .bold {
@@ -95,6 +104,11 @@ p .blue-underline::after {
   border-width: 3px;
 }
 
+.inner-section {
+  max-width: 375px;
+  margin: auto;
+}
+
 /* Buttons */
 .button {
   display: inline-block;
@@ -107,7 +121,7 @@ p .blue-underline::after {
   text-align: center;
   cursor: pointer;
   font-family: var(--heading-font);
-  font-size: 16px;
+  font-size: 1.2em;
 }
 .button.orange {
   background-color: var(--color-orange);
@@ -118,7 +132,7 @@ p .blue-underline::after {
 /* Header */
 /* TODO: gotta figure out this header garbage */
 header {
-  margin-bottom: 30px;
+  padding: 20px;
 }
 header nav {
   display: none;
@@ -137,9 +151,12 @@ header ul a {
   padding: 15px;
   display: block;
 }
-header img {
+header .logo-container {
+  position: relative;
+}
+header .logo-container img {
   width: 100%;
-  max-width: 150px;
+  max-width: 220px;
   display: block;
   margin: auto;
 }
@@ -167,6 +184,9 @@ section > .inner-section {
 .section-hero {
   overflow: hidden;
   background-color: #fcfcfc;
+}
+.section-hero h1 {
+  margin-top: 0;
 }
 .section-hero * {
   position: relative;
@@ -196,9 +216,12 @@ section > .inner-section {
   font-family: var(--heading-font);
   border-radius: 100%;
 
-  width: 35px;
-  height: 35px;
+  width: 35px !important;
+  height: 35px !important;
+  box-sizing: border-box;
+
   text-align: center;
+  font-size: 0.8em;
 }
 .section-process h2 .text {
   padding-left: 10px;
@@ -229,6 +252,8 @@ section > .inner-section {
   border-radius: var(--border-radius);
 
   position: relative;
+
+  background-color: #fff;
 }
 .section-customers .customer-review .text {
   margin-top: calc(var(--customer-head-size) / 2);
@@ -247,11 +272,14 @@ section > .inner-section {
   left: calc(50% - var(--customer-head-size) / 2);
 }
 .section-customers .google-reviews {
-  display: block;
+  display: inline-block;
   font-family: var(--subheading-font);
-  font-size: 18px;
+  font-size: 1.3em;
   margin-top: 30px;
-  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-gray);
 }
 
 .section-contact .contact-form {
@@ -276,6 +304,7 @@ section > .inner-section {
 .section-contact .contact-form label {
   display: block;
   font-family: var(--heading-font);
+  font-size: 1.3em;
 }
 .section-contact .contact-form input,
 .section-contact .contact-form textarea {
@@ -286,6 +315,7 @@ section > .inner-section {
   width: 100%;
   box-sizing: border-box;
   padding: 12px 8px;
+  font-size: 0.9em;
 }
 .section-contact .contact-form textarea {
   min-height: 100px;
@@ -295,7 +325,137 @@ section > .inner-section {
   margin: auto;
 }
 
+/* .section-benefits {
+  display: none;
+} */
+
 /* Utility Atomic Classes */
 .no-margin {
   margin: 0 !important;
+}
+
+@media screen and (min-width: 515px) {
+  .section-hero h1 {
+    max-width: 300px;
+  }
+  .section-hero h2 {
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 665px) {
+  html {
+    font-size: 1.1em;
+  }
+
+  .inner-section {
+    max-width: 845px !important;
+    padding: 50px !important;
+  }
+
+  .section-customers {
+    --stripe-color: var(--color-blue-light);
+
+    background: linear-gradient(
+      155deg,
+      white var(--start-interval),
+      var(--stripe-color) var(--start-interval),
+      var(--stripe-color) var(--stop-interval),
+      white var(--stop-interval)
+    );
+    /* Start #5cbcb0 from 0 and end at 5%, Start #fff at 5% and end at 15%, Start #5cbcb0 again at 15% and end at 100% */
+    background-size: 100%;
+    background-repeat: no-repeat; /* To avoid multiple instances */
+  }
+  .section-customers .customer-reviews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .section-customers .customer-reviews .customer-review {
+    margin: 40px 0px;
+    flex: 1;
+    max-width: 320px;
+    box-sizing: border-box;
+  }
+
+  .section-process {
+    --stripe-color: #ededed;
+
+    background: linear-gradient(
+      -145deg,
+      white var(--start-interval),
+      var(--stripe-color) var(--start-interval),
+      var(--stripe-color) var(--stop-interval),
+      white var(--stop-interval)
+    );
+  }
+  .section-process .row {
+    display: flex;
+    margin: 40px 0;
+  }
+  .section-process .image-container {
+    width: 250px;
+    height: 250px;
+    margin-right: 3%;
+    background-color: #fff;
+  }
+  .section-process .content-container {
+    flex: 1;
+  }
+  .section-process .content-container h2 {
+    margin: 0;
+  }
+
+  .section-contact {
+    --stripe-color: var(--color-orange-light);
+
+    background: linear-gradient(
+      155deg,
+      white var(--start-interval),
+      var(--stripe-color) var(--start-interval),
+      var(--stripe-color) var(--stop-interval),
+      white var(--stop-interval)
+    );
+  }
+  .section-contact h1,
+  .section-contact .subtitle {
+    text-align: center;
+  }
+  .section-contact .contact-form {
+    max-width: 450px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 665px) and (max-width: 910px) {
+  .section-customers .customer-reviews .customer-review {
+    max-width: 450px !important;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  html {
+    font-size: 1.3em;
+  }
+
+  .blue-underline::after {
+    border-bottom: 8px solid var(--color-blue);
+    bottom: -2px;
+  }
+
+  .inner-section {
+    max-width: 955px !important;
+  }
+
+  .section-hero h1 {
+    max-width: 400px;
+  }
+  .section-hero h2 {
+    max-width: 500px;
+  }
+
+  .section-contact .contact-form {
+    max-width: 650px !important;
+  }
 }
