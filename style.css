@@ -14,7 +14,7 @@
   --heading-font: "Gilroy Bold";
   --subheading-font: "Gilroy";
 
-  --body-font: "Times New Roman";
+  --body-font: "Gilroy";
   --body-line-height: 40px;
 
   --color-blue: #24c3ff;
@@ -28,8 +28,8 @@
   --border-radius: 8px;
   --border-width: 2px;
 
-  --start-interval: 40%;
-  --stop-interval: 75%;
+  --start-interval: 35%;
+  --stop-interval: 50%;
 }
 
 html {
@@ -204,10 +204,29 @@ section > .inner-section {
   height: 100%;
 }
 
+.section-benefits {
+  --stripe-color: #efefef;
+
+  /* background: linear-gradient(
+    -195deg,
+    white var(--start-interval),
+    var(--stripe-color) var(--start-interval),
+    var(--stripe-color) var(--stop-interval),
+    white var(--stop-interval)
+  );
+  background-size: 100%;
+  background-repeat: no-repeat; */
+}
 .section-benefits .subtitle {
   font-weight: bold;
   margin-bottom: 0;
   display: inline-block;
+  position: relative;
+}
+.section-benefits .subtitle::after {
+  content: "";
+  border-bottom: 6px solid var(--color-blue);
+  bottom: -5px;
 }
 .section-benefits .fas {
   font-size: 2.5em;
@@ -218,17 +237,25 @@ section > .inner-section {
 .section-benefits .subtitle + p + div {
   margin-top: 40px;
 }
-/* .section-benefits .inner-section div {
-  display: inline-block;
-  border: 3px solid var(--color-gray);
-  border-radius: var(--border-radius);
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-blue-light);
-} */
+@media screen and (min-width: 665px) {
+  .section-benefits {
+    --padding: 20px;
+  }
+  .section-benefits .reasons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .section-benefits .reason {
+    width: calc(50% - var(--padding) * 2);
+    padding-bottom: 20px;
+  }
+  .section-benefits .reason:nth-child(odd) {
+    padding-right: var(--padding);
+  }
+  .section-benefits .reason:nth-child(even) {
+    padding-left: var(--padding);
+  }
+}
 
 .section-process h2 {
   display: flex;
@@ -384,39 +411,41 @@ section > .inner-section {
   .section-customers {
     --stripe-color: var(--color-blue-light);
 
-    background: linear-gradient(
-      155deg,
+    /* background: linear-gradient(
+      125deg,
       white var(--start-interval),
       var(--stripe-color) var(--start-interval),
       var(--stripe-color) var(--stop-interval),
       white var(--stop-interval)
     );
-    /* Start #5cbcb0 from 0 and end at 5%, Start #fff at 5% and end at 15%, Start #5cbcb0 again at 15% and end at 100% */
     background-size: 100%;
-    background-repeat: no-repeat; /* To avoid multiple instances */
+    background-repeat: no-repeat; */
   }
   .section-customers .customer-reviews {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
   .section-customers .customer-reviews .customer-review {
-    margin: 40px 0px;
-    flex: 1;
-    max-width: 320px;
     box-sizing: border-box;
+    width: calc(50% - 40px);
+  }
+  .section-customers .customer-reviews .customer-review:nth-of-type(odd) {
+    margin-right: 20px;
+  }
+  .section-customers .customer-reviews .customer-review:nth-of-type(even) {
+    margin-left: 20px;
   }
 
   .section-process {
     --stripe-color: #ededed;
 
-    background: linear-gradient(
-      -145deg,
+    /* background: linear-gradient(
+      -175deg,
       white var(--start-interval),
       var(--stripe-color) var(--start-interval),
       var(--stripe-color) var(--stop-interval),
       white var(--stop-interval)
-    );
+    ); */
   }
   .section-process .row {
     display: flex;
@@ -438,13 +467,13 @@ section > .inner-section {
   .section-contact {
     --stripe-color: var(--color-orange-light);
 
-    background: linear-gradient(
+    /* background: linear-gradient(
       155deg,
       white var(--start-interval),
       var(--stripe-color) var(--start-interval),
       var(--stripe-color) var(--stop-interval),
       white var(--stop-interval)
-    );
+    ); */
   }
   .section-contact h1,
   .section-contact .subtitle {
@@ -484,6 +513,6 @@ section > .inner-section {
   }
 
   .section-contact .contact-form {
-    max-width: 650px !important;
+    max-width: 550px !important;
   }
 }
