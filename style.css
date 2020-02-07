@@ -231,6 +231,18 @@ section > .inner-section {
 .section-benefits .fas {
   font-size: 2.5em;
 }
+.section-benefits .fa-rainbow {
+  color: #c73c3c;
+}
+.section-benefits .fa-file-invoice-dollar {
+  color: #2c982c;
+}
+.section-benefits .fa-clock {
+  color: #ac41bd;
+}
+.section-benefits .fa-shield-alt {
+  color: #31b6b8;
+}
 .section-benefits .subtitle + p {
   margin-top: 10px;
 }
