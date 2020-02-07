@@ -1,12 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
   var modalTemplate = document.querySelector("#modal-template").innerHTML;
   var modals = document.querySelectorAll(".modal");
-
   for (var i = 0; i < modals.length; i++) {
-    initializeModal(modals[i], i);
+    initializeModal(modals[i]);
   }
 
-  function initializeModal(modal, modalId) {
+  var viewWorkLinks = document.querySelectorAll(".view-work");
+  for (var i = 0; i < viewWorkLinks.length; i++) {
+    initializeViewWorkLink(viewWorkLinks[i]);
+  }
+
+  /**
+   * Handle closing modals
+   */
+  document.body.addEventListener("click", function(e) {
+    if (
+      e.target.className.includes("modal") ||
+      e.target.className.includes("close")
+    ) {
+      document.querySelector(".modal.open").classList.remove("open");
+    }
+  });
+
+  function initializeModal(modal) {
     var imageMarkup = modal.querySelector("noscript").innerHTML;
     modal.innerHTML = modalTemplate;
     modal.querySelector(".image-container").innerHTML = imageMarkup;
@@ -52,5 +68,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       }
     }
+  }
+
+  function initializeViewWorkLink(link) {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      var customerName = (link.dataset || {}).customerName;
+      var modal = document.getElementById(customerName);
+      if (modal) {
+        modal.classList.add("open");
+      }
+    });
   }
 });
