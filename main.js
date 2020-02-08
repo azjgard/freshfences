@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  initializeForm();
+
   function initializeModal(modal) {
     var imageMarkup = modal.querySelector("noscript").innerHTML;
     modal.innerHTML = modalTemplate;
@@ -81,3 +83,71 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+function initializeForm() {
+  var form = document.getElementsByTagName("form")[0];
+
+  var inputName = document.getElementById("name");
+  var inputPhone = document.getElementById("phone/email");
+  var inputNote = document.getElementById("note");
+
+  form.addEventListener("submit", handleFormSubmit);
+
+  function clearForm() {
+    inputName.value = "";
+    inputPhone.value = "";
+    inputNote.value = "";
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var data = {
+      name: inputName.value,
+      phone: inputPhone.value,
+      note: inputNote.value
+    };
+
+    if (!inputName.value) {
+      alert("Please enter a name; we need to know what to call you!");
+      return;
+    }
+
+    if (!inputPhone.value) {
+      alert(
+        "Please input a phone number or email; we need a way to contact you!"
+      );
+      return;
+    }
+
+    sendPost(data);
+  }
+
+  function sendPost(data) {
+    var http = new XMLHttpRequest();
+
+    http.open("POST", form.action, true);
+    http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    http.send(JSON.stringify(data));
+
+    http.onreadystatechange = function() {
+      if (http.readyState == 4) {
+        switch (http.status) {
+          case 200:
+            alert(
+              "Thank you! We received your request and will be in touch soon!"
+            );
+            clearForm();
+            break;
+          default:
+            alert(
+              "It looks like something went wrong! Please send us an email at contact@freshfences.com, or leave us a message at (480) 492-5279."
+            );
+            clearErrors();
+            break;
+        }
+      }
+    };
+  }
+}
