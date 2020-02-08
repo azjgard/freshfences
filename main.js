@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var imageElements = modal.querySelectorAll(".image-container img");
     imageElements[0].classList.add("active");
 
+    modal.querySelector(".slide-tracker .total").innerHTML =
+      imageElements.length;
+
     var currentIndex = 0;
 
     modal.querySelector(".left").addEventListener("click", changeSlide);
@@ -69,6 +72,9 @@ document.addEventListener("DOMContentLoaded", function() {
           imageElements[i].classList.remove("active");
         }
       }
+
+      modal.querySelector(".slide-tracker .current").innerHTML =
+        currentIndex + 1;
     }
   }
 
@@ -79,6 +85,19 @@ document.addEventListener("DOMContentLoaded", function() {
       var modal = document.getElementById(customerName);
       if (modal) {
         modal.classList.add("open");
+
+        var imageElements = modal.querySelectorAll(
+          ".modal.open .image-container img"
+        );
+
+        var tallestImage = -1;
+        for (var i = 0; i < imageElements.length; i++) {
+          if (imageElements[i].clientHeight > tallestImage) {
+            tallestImage = imageElements[i].clientHeight;
+          }
+        }
+
+        modal.querySelector(".inner-modal").style.height = tallestImage + "px";
       }
     });
   }
