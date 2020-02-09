@@ -122,7 +122,7 @@ p .blue-underline::after {
 /* Buttons */
 .button {
   display: inline-block;
-  padding: 9px 24px;
+  padding: 15px 30px;
   border: var(--border-width) solid #555;
   border-radius: var(--border-radius);
   text-decoration: none;
@@ -130,7 +130,7 @@ p .blue-underline::after {
   color: #555;
   text-align: center;
   cursor: pointer;
-  font-family: var(--heading-font);
+  font-family: var(--subheading-font);
   font-size: 1.2em;
 }
 .button.orange {
@@ -492,7 +492,11 @@ section > .inner-section {
 .section-contact .contact-form label {
   display: block;
   font-family: var(--heading-font);
-  font-size: 1.3em;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+.section-contact .contact-form fieldset:not(:first-child) label {
+  margin-top: 20px;
 }
 .section-contact .contact-form input,
 .section-contact .contact-form textarea {
@@ -506,11 +510,12 @@ section > .inner-section {
   font-size: 0.9em;
 }
 .section-contact .contact-form textarea {
-  min-height: 100px;
+  min-height: 144px;
 }
 .section-contact .contact-form button {
   display: block;
   margin: auto;
+  margin-top: 30px;
 }
 
 /* Utility Atomic Classes */
