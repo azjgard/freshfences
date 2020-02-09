@@ -185,7 +185,7 @@
                <div class="reason">
                   <div><i class="fas fa-shield-alt"></i></div>
                   <h2 class="subtitle">Shielded from efflorescence</h2>
-                  <p>Our painting process treats your fence with a sealant specifically designed to keep away<i>efflorescence</i> - the ugly white
+                  <p>Our painting process treats your fence with a sealant specifically designed to keep away <i>efflorescence</i> - the ugly white
                      powder you've seen built up on outdoor walls. As a
                      result, your fence will continue looking hygienic and fresh!
                   </p>
@@ -224,6 +224,7 @@
       <footer>
          <img src="public/logo.svg" />
          <h3>Copyright © Fresh Fences 2020</h3>
+         <h3 style="font-size: 14px; margin-bottom: 20px; padding-top: 0; margin-top: -20px">Happily operating out of Phoenix, AZ 🌵</h3>
       </footer>
       <script type="modal-template" id="modal-template">
          <button><i class="fa fa-close"></i></button>
@@ -256,5 +257,16 @@
                alt="An ugly gray fence ready to be painted"
                />
       </div>
+
+
+      <script>
+        function initFreshChat() {
+          window.fcWidget.init({
+            token: "d8e4886a-c5a2-4eb5-bbc7-6d3441f64dfe",
+            host: "https://wchat.freshchat.com"
+          });
+        }
+        function initialize(i,t){var e;i.getElementById(t)?initFreshChat():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wchat.freshchat.com/js/widget.js",e.onload=initFreshChat,i.head.appendChild(e))}function initiateCall(){initialize(document,"freshchat-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);
+      </script>
    </body>
 </html>
