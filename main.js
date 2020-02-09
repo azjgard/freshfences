@@ -128,7 +128,9 @@ function initializeForm() {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log("form enabled: ", formEnabled);
+    ga("send", "event", "Form", "submission");
+
+    console.log("Latest build deployed");
 
     if (!formEnabled) {
       return;
@@ -143,12 +145,14 @@ function initializeForm() {
     };
 
     if (!inputName.value) {
+      ga("send", "event", "Form", "submission", "missing-name");
       alert("Please enter a name; we need to know what to call you!");
       formEnabled = true;
       return;
     }
 
     if (!inputPhone.value) {
+      ga("send", "event", "Form", "submission", "missing-phone-email");
       alert(
         "Please input a phone number or email; we need a way to contact you!"
       );
@@ -156,6 +160,7 @@ function initializeForm() {
       return;
     }
 
+    ga("send", "event", "Form", "submission", "success");
     sendPost(data);
 
     return false;
