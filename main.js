@@ -25,12 +25,14 @@ document.addEventListener("DOMContentLoaded", function() {
   initializeForm();
 
   function initializeModal(modal) {
-    var imageMarkup = modal.querySelector("noscript").innerHTML;
+    var imageMarkup = modal.innerHTML;
     modal.innerHTML = modalTemplate;
     modal.querySelector(".image-container").innerHTML = imageMarkup;
 
     var imageElements = modal.querySelectorAll(".image-container img");
-    imageElements[0].classList.add("active");
+    if (imageElements[0]) {
+      imageElements[0].classList.add("active");
+    }
 
     modal.querySelector(".slide-tracker .total").innerHTML =
       imageElements.length;
@@ -99,6 +101,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         modal.querySelector(".inner-modal").style.height = tallestImage + "px";
       }
+
+      return false;
     });
   }
 });
@@ -141,6 +145,8 @@ function initializeForm() {
     }
 
     sendPost(data);
+
+    return false;
   }
 
   function sendPost(data) {
