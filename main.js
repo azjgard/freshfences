@@ -130,7 +130,7 @@ function initializeForm() {
 
     ga("send", "event", "Form", "submission");
 
-    console.log("Latest build deployed");
+    console.log("Latest build deployed - 1");
 
     if (!formEnabled) {
       return;
