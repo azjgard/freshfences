@@ -122,9 +122,19 @@ function initializeForm() {
     inputNote.value = "";
   }
 
+  var formEnabled = true;
+
   function handleFormSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
+
+    console.log("form enabled: ", formEnabled);
+
+    if (!formEnabled) {
+      return;
+    }
+
+    formEnabled = false;
 
     var data = {
       name: inputName.value,
@@ -134,6 +144,7 @@ function initializeForm() {
 
     if (!inputName.value) {
       alert("Please enter a name; we need to know what to call you!");
+      formEnabled = true;
       return;
     }
 
@@ -141,6 +152,7 @@ function initializeForm() {
       alert(
         "Please input a phone number or email; we need a way to contact you!"
       );
+      formEnabled = true;
       return;
     }
 
@@ -172,6 +184,8 @@ function initializeForm() {
             clearErrors();
             break;
         }
+
+        formEnabled = true;
       }
     };
   }
