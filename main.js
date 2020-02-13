@@ -34,16 +34,16 @@ document.addEventListener("DOMContentLoaded", function() {
     modal.querySelector(".left").addEventListener("click", changeSlide);
     modal.querySelector(".right").addEventListener("click", changeSlide);
 
-    modal.addEventListener("swiped-left", swipedLeft);
     modal.addEventListener("swiped-right", swipedRight);
+    modal.addEventListener("swiped-left", swipedLeft);
 
     modal.addEventListener("click", handleClose);
 
-    function swipedLeft(e) {
+    function swipedRight(e) {
       changeSlide({ target: { className: "left" } });
     }
 
-    function swipedRight(e) {
+    function swipedLeft(e) {
       changeSlide({ target: { className: "right" } });
     }
 
