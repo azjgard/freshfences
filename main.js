@@ -13,14 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
   /**
    * Handle closing modals
    */
-  document.body.addEventListener("click", function(e) {
-    if (
-      e.target.className.includes("modal") ||
-      e.target.className.includes("close")
-    ) {
-      document.querySelector(".modal.open").classList.remove("open");
-    }
-  });
 
   initializeForm();
 
@@ -41,6 +33,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
     modal.querySelector(".left").addEventListener("click", changeSlide);
     modal.querySelector(".right").addEventListener("click", changeSlide);
+
+    modal.addEventListener("swiped-left", swipedLeft);
+    modal.addEventListener("swiped-right", swipedRight);
+
+    modal.addEventListener("click", handleClose);
+
+    function swipedLeft(e) {
+      changeSlide({ target: { className: "left" } });
+    }
+
+    function swipedRight(e) {
+      changeSlide({ target: { className: "right" } });
+    }
+
+    function handleClose(e) {
+      if (
+        e.target.className.includes("modal") ||
+        e.target.className.includes("close")
+      ) {
+        modal.classList.remove("open");
+      }
+    }
 
     function changeSlide(e) {
       var direction = e.target.className.includes("left") ? "left" : "right";
