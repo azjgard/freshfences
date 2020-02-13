@@ -79,11 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function render() {
       for (var i = 0; i < imageElements.length; i++) {
         if (i === currentIndex) {
-          (function(i) {
-            setTimeout(function() {
-              imageElements[i].classList.add("active");
-            }, 500);
-          })(i);
+          imageElements[i].classList.add("active");
         } else {
           imageElements[i].classList.remove("active");
         }
